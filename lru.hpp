@@ -1,57 +1,9 @@
 /*
- *
  * Implementation of an LRU cache with a maximum size.
  *
- * - Implemented as a single hash table.
- *   Most implementations I have seen use a map and a list.
- *   They have the same algorithmic complexity (constant time insertion,
- *   retrieval and query) but the few experiments I have run show that the
- *   hash table implementation is about 5 times faster than the map + list
- *   implementation I compared it with (see lru_comp.cpp).
+ * See http://code.google.com/p/lru-cache-cpp/ for usage and limitations.
  *
- * - A bucket is (key, value, older*, newer*)
- *
- * - The cache is not safe against concurrent modifications.
- *   I may add thread-safe versions in the future or modify the current
- *   implementation.
- *
- * - To make the implementation easier, the cache allocates the maxsize memory
- *   right in the constructor: that way we don't have to deal with reallocation
- *   and invalid pointers.  The drawback is a high up-front memory footprint.
- *   This could prove too costly for applications that create many caches
- *   but fill only some of them.
- *
- * - There is no way to resize the cache once it is built, although the provided
- *   iterators make it easy to copy the contents of one cache into a larger
- *   empty cache.
- *
- *
- * I used the following documentation when implementing the cache:
- * - http://gcc.gnu.org/onlinedocs/libstdc++/libstdc++-html-USERS-4.2/hashtable_8h-source.html
- *
- * I have found some implementations of LRU caches in C++:
- * - http://patrickaudley.com/code/project/lrucache
- * - http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.88.7296&rep=rep1&type=pdf
- * - http://www.bottlenose.demon.co.uk/article/lru.htm
- * - http://stackoverflow.com/questions/2057424/lru-implementation-in-production-code
- * - http://stackoverflow.com/questions/2504178/lru-cache-design
- * - http://www.megasolutions.net/cplus/STL-based-LRU-cache,-any-suggestions-for-improvements_-60106.aspx
- * - http://www.codeproject.com/KB/recipes/LRUCache.aspx
- * - http://bytes.com/topic/c/answers/653919-design-patterns-lru-cache-c
- *
- *
- * Usage:
- *
- *   typedef plb::LRUCacheH4<int, int> lru_cache;
- *   lru_cache cache(10);
- *   ...
- *   int key = ...;
- *   lru_cache::const_iterator it = cache.find(key);
- *   if (it != cache.end())
- *       cerr << "cache[" << it.key() << "] = " << it.value() << endl;
- *   else
- *       cache[key] = compute_value_from_key(key);
- *
+ * Licensed under the GNU LGPL: http://www.gnu.org/copyleft/lesser.html
  *
  * Pierre-Luc Brunelle, 2011
  * pierre-luc.brunelle@polytml.ca

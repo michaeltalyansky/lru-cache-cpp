@@ -1,8 +1,11 @@
 /*
+ * A read-only interface to /proc/pid/smaps
  *
- * Read and report /proc/pid/smaps
+ * Released as part of lru-cpp-cache:  http://code.google.com/p/lru-cache-cpp/
  *
- * Based on: http://linux.die.net/man/5/proc
+ * Reference: http://linux.die.net/man/5/proc
+ *
+ * Licensed under the GNU LGPL: http://www.gnu.org/copyleft/lesser.html
  *
  * Pierre-Luc Brunelle, 2011
  * pierre-luc.brunelle@polytml.ca
